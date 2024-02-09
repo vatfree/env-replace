@@ -8,7 +8,7 @@ function envReplace (pattern) {
     let file = fs.readFileSync(fileName, 'utf-8')
 
     Object.keys(process.env).forEach(variable => {
-      const re = new RegExp(`\\$${variable}`, 'g')
+      const re = new RegExp(`{env.${variable}}`, 'g')
       file = file.replace(re, process.env[variable])
     })
 
